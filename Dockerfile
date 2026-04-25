@@ -6,10 +6,10 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --production
 
 # Moved your vulnerability patches here so they are correctly bundled
-RUN npm install cross-spawn@7.0.5 glob@10.5.0 minimatch@9.0.7 --omit=dev && \
+RUN npm install cross-spawn@7.0.5 glob@10.5.0 minimatch@9.0.7 --production && \
     npm cache clean --force
 
 # Stage 2: Run
